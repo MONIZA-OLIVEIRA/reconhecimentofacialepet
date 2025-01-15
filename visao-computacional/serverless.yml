@@ -1,0 +1,74 @@
+service: vision
+frameworkVersion: '4.2.5'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+
+  # Rekognition IAM
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - rekognition:DetectLabels
+        - rekognition:DetectFaces
+      Resource: "*"
+
+  # Bedrock IAM
+    - Effect: Allow
+      Action:
+        - bedrock:InvokeModel
+      Resource: "*"
+
+functions:
+  health:
+    handler: api.health.health
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+  v1Description:
+    handler: api.v1.handlers.info.v1_description
+    events:
+      - httpApi:
+          path: /v1
+          method: get
+
+  v2Description:
+    handler: api.v2.handlers.info.v2_description
+    events:
+      - httpApi:
+          path: /v2
+          method: get
+
+  detectEmotion:
+    handler: api.v1.handlers.emotion.lambda_handler
+    timeout: 25
+    events:
+      - httpApi:
+          path: /v1/vision
+          method: post
+
+  detectPetAndEmotion:
+    handler: api.v2.handlers.pet__emotion.lambda_handler
+    timeout: 25
+    events:
+      - httpApi:
+          path: /v2/vision
+          method: post
+
+custom:
+  pythonRequirements:
+    fileName: ../requirements.txt
+
+  dotenv:
+    path: ../.env
+
+  serverless-offline:
+    port: 3000
+
+plugins:
+  - serverless-offline
+  - serverless-python-requirements
+  - serverless-dotenv-plugin

@@ -1,0 +1,5 @@
+{
+    "watch": ["./visao-computacional"],
+    "ext": "js, json, yaml, yml, py",
+    "exec": "cd visao-computacional && npx serverless@4.2.5 offline"
+  }

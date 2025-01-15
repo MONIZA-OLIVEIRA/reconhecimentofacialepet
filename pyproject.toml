@@ -1,0 +1,9 @@
+[tool.taskipy.tasks]
+deploy = "cd visao-computacional && serverless deploy"
+run = "cd visao-computacional && serverless offline"
+
+clean-cache = "python -c \"from development.taskipy.clean import clean_cache; clean_cache()\""
+
+pre-commit = "pre-commit install"
+lint = ""
+lint-fix = ""

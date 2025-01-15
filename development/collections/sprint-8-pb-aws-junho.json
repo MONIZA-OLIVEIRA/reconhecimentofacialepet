@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "07a42653-236e-4b0c-b4d2-2fbd3f27b3a7",
+		"name": "sprint-8-pb-aws-junho",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25031222"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Test Get Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Get v1Description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/v1"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Get v2Description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/v2"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Post detectEmotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bucket\": \"rekognition-sprint-8\",\r\n    \"imageName\": \"pho.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/v1/vision"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Post detectPetAndEmotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bucket\": \"my-bucket\",\n    \"imageName\": \"my-image.jpg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/v2/vision"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deploy",
+			"item": [
+				{
+					"name": "Test Get Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "/"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Get v1Description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "/v1"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Get v2Description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "/v2"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Post detectEmotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bucket\": \"my-bucket\",\r\n    \"imageName\": \"my-image.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "/v1/vision"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Post detectPetAndEmotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bucket\": \"rekognition-sprint-8\",\r\n    \"imageName\": \"cristal.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://bi4j2lwwkh.execute-api.us-east-1.amazonaws.com/v2/vision"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
